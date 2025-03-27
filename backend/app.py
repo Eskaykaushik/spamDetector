@@ -1,6 +1,7 @@
 from flask import Flask, request, jsonify
 import pickle
 from flask_cors import CORS
+import os
 
 # Construct absolute path to model
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
@@ -24,7 +25,7 @@ def predict():
 
     return jsonify({"spam": bool(prediction), "confidence": round(confidence, 2)})
 
-import os
+
 
 if __name__ == "__main__":
     port = int(os.environ.get("PORT", 5000))
