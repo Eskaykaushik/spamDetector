@@ -2,8 +2,12 @@ from flask import Flask, request, jsonify
 import pickle
 from flask_cors import CORS
 
+# Construct absolute path to model
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+model_path = os.path.join(BASE_DIR, "models", "spam_model.pkl")
+
 # Load trained model
-with open("models/spam_model.pkl", "rb") as f:
+with open(model_path, "rb") as f:
     model = pickle.load(f)
 
 app = Flask(__name__)
